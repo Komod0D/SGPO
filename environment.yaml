@@ -19,4 +19,3 @@ dependencies:
   - seaborn
   - pip:
     - hydra-core
-    - flash-attn
