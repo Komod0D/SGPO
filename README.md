@@ -7,6 +7,7 @@ Repository for protein fitness optimization by guiding the generations from disc
 conda env create -f environment.yaml
 conda activate SGPO
 pip install evodiff
+pip install flash-attn
 ```
 Processed MSA sequences (for training the prior) and fitness data (for guidance) for TrpB and CreiLOV are preloaded in this repo under `data`. Raw data, pretrained model checkpoints, and experimental outputs can be downloaded from [huggingface](https://huggingface.co/jsunn-y/SGPO).
 
