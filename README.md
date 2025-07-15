@@ -4,7 +4,7 @@ Repository for protein fitness optimization by guiding the generations from disc
 
 ## Installation:
 ```
-conda env create -f environment.yaml
+conda env create -f environment.yaml #transformers version 4.48.1 recommended
 conda activate SGPO
 pip install evodiff
 pip install flash-attn
