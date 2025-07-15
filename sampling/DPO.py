@@ -33,13 +33,15 @@ class DPOInpaint(Algo):
         #save to fasta
         #if sequences is a string of the fasta file name
         if type(sequences) == str:
-            os.system(f"mafft --quiet --add {sequences} --keeplength data/{self.name}.fasta > tmp/aligned.fasta")
+            os.system(f"mafft --quiet --add {sequences} --keeplength data/{self.name}/parent.fasta > tmp/aligned.fasta")
         else:
+            #make tmp directory if it does not exist
+            os.makedirs("tmp", exist_ok=True)
             with open(f"tmp/temp.fasta", "w") as f:
                 for i, seq in enumerate(sequences):
                     f.write(f">{i}\n")
                     f.write(f"{seq}\n")
-            os.system(f"mafft --quiet --add tmp/temp.fasta --keeplength data/{self.name}.fasta > tmp/aligned.fasta")
+            os.system(f"mafft --quiet --add tmp/temp.fasta --keeplength data/{self.name}/parent.fasta > tmp/aligned.fasta")
 
         aligned = list(SeqIO.parse("tmp/aligned.fasta", "fasta"))
         
