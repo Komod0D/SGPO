@@ -1,5 +1,5 @@
 # Steered Generation for Protein Optimization (SGPO)
-![](figures/landscape2.png)
+![](figures/landscape.png)
 Repository for protein fitness optimization by guiding the generations from discrete diffusion models using various pretrained priors and guidance strategies, or finetuning autoregressive language models. Accompanies the [paper](https://arxiv.org/abs/2505.15093) "Steering Generative Models with Experimental Data for Protein Fitness Optimization."
 
 ## Installation:
@@ -127,6 +127,7 @@ Generates random samples for downstream analysis.
 ```
 python baseline_sample.py
 ```
+
 
 
 
