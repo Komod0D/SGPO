@@ -110,7 +110,7 @@ The processed data and oracle models needed to run downstream experiments are pr
 [Jackhmmer](https://github.com/EddyRivasLab/hmmer/tree/master) was used to search for homologous proteins and generate a multiple sequence alignment (MSA). The steps to perform the Jackhmmer search and process the outputs is provided in `data/hmmer_processing.ipynb`. The inputs to this model are (1) a parent sequence as a target and (2) all sequences in Uniref90 (December 2024). Jackhmmer outputs have been uploaded to [huggingface](https://huggingface.co/jsunn-y/SGPO).
 
 ### Fitness data
-Raw fitness data were downloaded from the [CreiLOV](https://pubs.acs.org/doi/10.1021/acssynbio.2c00662) and [TrpB](https://www.pnas.org/doi/10.1073/pnas.2400439121) datasets, respectively, and have been uploaded to [huggingface](https://huggingface.co/jsunn-y/SGPO). These data were normalized and processed using the steps provided in `data/process_fitness.ipynb`.
+Raw fitness data were downloaded from the [CreiLOV](https://pubs.acs.org/doi/10.1021/acssynbio.2c00662), [TrpB](https://www.pnas.org/doi/10.1073/pnas.2400439121), and [GB1](https://www.sciencedirect.com/science/article/pii/S0960982214012688) datasets, respectively, and have been uploaded to [huggingface](https://huggingface.co/jsunn-y/SGPO). These data were normalized and processed using the steps provided in `data/process_fitness.ipynb`.
 
 ### Oracle training:
 Pretrained oracles are uploaded to `oracle/checkpoints`. Alternatively, oracle training can be reproduced with the command
@@ -127,6 +127,7 @@ Generates random samples for downstream analysis.
 ```
 python baseline_sample.py
 ```
+
 
 
 
