@@ -19,7 +19,7 @@ Processed MSA sequences (for training the prior) and fitness data (for guidance)
 5. `exps/`: outputs from experiments, mainly generated sequences and associated fitness values
 6. `models/`: diffusion models, denoising model architectures are provided in `models/pretraining/model/`
 7. `oracle/`: oracle checkpoints for evaluating "ground truth" fitness and code for training and running the oracle
-8. `sampling/`: code for sampling using various guidance algorithms
+8. `sampling/`: code for inference-time sampling using various guidance algorithms
 9. `scripts/`: shell scripts for running many experiments at once
 10. `training/`: code for training the value functions used in guidance
 
@@ -127,6 +127,7 @@ Generates random samples for downstream analysis.
 ```
 python baseline_sample.py
 ```
+
 
 
 
