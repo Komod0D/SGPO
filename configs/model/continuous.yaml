@@ -1,3 +1,0 @@
-name: continuous
-model:
-  _target_: models.continuous.ContinuousModel
