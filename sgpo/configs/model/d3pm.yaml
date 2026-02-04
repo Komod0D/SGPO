@@ -1,0 +1,3 @@
+name: d3pm
+model:
+  _target_: sgpo.models.d3pm.D3PM

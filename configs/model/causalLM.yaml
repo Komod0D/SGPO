@@ -1,3 +1,0 @@
-name: causalLM
-model:
-  _target_: models.causalLM.CausalLM

@@ -1,3 +1,0 @@
-name: d3pm
-model:
-  _target_: models.d3pm.D3PM

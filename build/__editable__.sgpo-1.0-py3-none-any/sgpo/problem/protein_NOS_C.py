@@ -1,0 +1,1 @@
+/home/komodo/Documents/uni/thesis/sgpo/sgpo/problem/protein_NOS_C.py

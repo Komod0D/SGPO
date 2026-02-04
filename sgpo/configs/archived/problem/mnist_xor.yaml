@@ -1,0 +1,12 @@
+name: mnist_xor
+model:
+  _target_: sgpo.problem.basic.XOR
+  ratio: 0.5
+  length: 1024
+
+data:
+  _target_: sgpo.data.mnist.MNIST
+  train: False
+  discrete: True
+
+exp_dir: exps/mnist_xor

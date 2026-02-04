@@ -1,0 +1,1 @@
+/home/komodo/Documents/uni/thesis/sgpo/sgpo/models/pretraining/model/d3pm_evodiff.py
