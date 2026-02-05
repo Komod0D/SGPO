@@ -3,7 +3,7 @@ wandb_project: guided-diffusion-protein
 
 data:
   name: TrpB
-  dataset_path: sgpo.data/TrpB_MSA.csv
+  dataset_path: data/TrpB_MSA.csv
   splits: [train, validation]
   
 #might make sense to have a different collater or noise schedule here, but they only test one in evodiff

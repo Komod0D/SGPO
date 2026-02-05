@@ -13,6 +13,9 @@ import tqdm
 # from sgpo.dataset.protein import ProteinPredictorDataset
 from sgpo.sampling.DPO import DPOInpaint
 from sgpo.sampling.cls_guidance import Classifier_Guidance_Inpaint, Classifier_Guidance_Continuous
+import sgpo
+from importlib_resources import files
+from pathlib import Path
 
 def sample(config, n_samples, algorithm, dataset, batch_size, round, unique_only=False, BO=False):
     #calculate number of batches
@@ -32,12 +35,12 @@ def main(config):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     if 'causalLM' in config.model.name:
-        problem_config = OmegaConf.load('configs/problem/protein_DPO.yaml')
+        problem_config = OmegaConf.load(files(sgpo) / Path('configs/problem/protein_DPO.yaml'))
     else:
         if "continuous" in config.model.name:
-            problem_config = OmegaConf.load('configs/problem/protein_classifier_continuous.yaml')
+            problem_config = OmegaConf.load(files(sgpo) / Path('configs/problem/protein_classifier_continuous.yaml'))
         else:
-            problem_config = OmegaConf.load('configs/problem/protein_classifier_discrete.yaml')
+            problem_config = OmegaConf.load(files(sgpo) / Path('configs/problem/protein_classifier_discrete.yaml'))
 
     exp_dir = os.path.join(problem_config.exp_dir, config.data.name, config.pretrained_ckpt.split('/')[0], "prior_sample")
     os.makedirs(exp_dir, exist_ok=True)

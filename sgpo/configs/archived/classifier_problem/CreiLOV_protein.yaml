@@ -8,7 +8,7 @@ data:
   _target_: sgpo.data.protein.ProteinPredictorDataset
   data_config:
     name: CreiLOV
-    data_path: sgpo.data/CreiLOV_fitness.csv
+    data_path: data/CreiLOV_fitness.csv
     full_seq: MAGLRHTFVVADATLPDCPLVYASEGFYAMTGYGPDEVLGHNARFLQGEGTDPKEVQKIRDAIKKGEACSVRLLNYRKDGTPFWNLLTVTPIKTPDGRVSKFVGVQVDVTSKTEGKALA
     seq_len: 119
     residues: None #mutated positions, this uses 1 indexing

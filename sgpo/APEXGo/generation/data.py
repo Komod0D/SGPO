@@ -5,6 +5,9 @@ import torch.nn.functional as F
 import pandas as pd
 import itertools
 from tqdm import tqdm
+from importlib_resources import files, as_file
+import sgpo
+from pathlib import Path
 
 
 class DataModuleKmers(pl.LightningDataModule):
@@ -30,8 +33,9 @@ class DataModuleKmers(pl.LightningDataModule):
 class DatasetKmers(Dataset): # asssuming train data 
     def __init__(self, dataset='train', data_path=None, k=3, vocab=None, vocab2idx=None, load_data=False):
         if data_path is None: 
-            path_to_data = 'data/uniref-cropped.csv' 
-        df = pd.read_csv(path_to_data )
+            path_to_data = Path('data/uniref-cropped.csv')
+        base = files(sgpo)
+        df = pd.read_csv(base + path_to_data)
         self.dataset = dataset
         train_seqs = df['sequence'].values  # 4_500_000  sequences 
         # SEQUENCE LENGTHS ANALYSIS:  Max = 299, Min = 100, Mean = 183.03 

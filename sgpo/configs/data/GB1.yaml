@@ -1,5 +1,5 @@
 name: GB1
-data_path: sgpo.data/GB1/fitness.csv
+data_path: data/GB1/fitness.csv
 pretrain_data_prefix: data/GB1/ #the start of the file name for pretraining data
 full_seq: MQYKLILNGKTLKGETTTEAVDAATAEKVFKQYANDNGVDGEWTYDDATKTFTVTE
 seq_len: 56
@@ -9,4 +9,4 @@ seed: 42
 #alphabet_size: 26
 alphabet: 'ACDEFGHIKLMNPQRSTVWYBZXJOU-*#@!'
 alphabet_size: 31 #don't hardcode this in the future
-oracle_model_path: sgpo.oracle/checkpoints/GB1
+oracle_model_path: oracle/checkpoints/GB1

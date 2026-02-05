@@ -56,4 +56,4 @@ exp_dir: exps/protein
 # evaluator:
 #   _target_: eval.Evaluator
 #   residues: [183, 184, 227, 228]
-#   data_path: sgpo.data/fitness.csv
+#   data_path: data/fitness.csv

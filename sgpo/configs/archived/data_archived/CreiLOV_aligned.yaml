@@ -1,5 +1,5 @@
 name: CreiLOV_aligned
-data_path: sgpo.data/CreiLOV_fitness.csv
+data_path: data/CreiLOV_fitness.csv
 full_seq: MAGLRHTFVVADATLPDCPLVYASEGFYAMTGYGPDEVLGHNARFLQGEGTDPKEVQKIRDAIKKGEACSVRLLNYRKDGTPFWNLLTVTPIKTPDGRVSKFVGVQVDVTSKTEGKALA
 seq_len: 119
 residues: #mutated positions, this uses 1 indexing, if None, then use all residues
