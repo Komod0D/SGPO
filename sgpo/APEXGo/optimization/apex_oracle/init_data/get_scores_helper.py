@@ -4,7 +4,11 @@ import numpy as np
 import sys 
 sys.path.append("../")
 import numpy as np 
-import os 
+import os
+from pathlib import Path
+from importlib_resources import files
+import sgpo
+
 
 try:
     from apex_oracle import apex_wrapper
@@ -26,9 +30,9 @@ def process_in_chunks(data, chunk_size, process_function):
 from apex_oracle import apex_wrapper
 
 # Load data
-file_path = '../apex_oracle/results/templates.txt'
-output_path = '../apex_oracle/results/templates_mics.csv'
-x_list = pd.read_csv(file_path, header=None)[0].to_list()
+file_path = Path('APEXGo/optimization/apex_oracle/results/templates.txt')
+output_path = Path('APEXGo/optimization/apex_oracle/results/templates_mics.csv')
+x_list = pd.read_csv(files(sgpo) / file_path, header=None)[0].to_list()
 
 # Process data in chunks of 100 sequences
 chunk_size = 100

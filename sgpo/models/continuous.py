@@ -3,7 +3,9 @@ import torch
 import torch.nn.functional as F
 from .base import GenerativeModel
 from sgpo.models.pretraining.model.continuous_diffusion import GaussianDiffusion
-
+import sgpo
+from importlib_resources import files
+from pathlib import Path
 
 class ContinuousModel(GenerativeModel):
     def __init__(self, model_name, seq_len, device='cuda'):
@@ -17,7 +19,7 @@ class ContinuousModel(GenerativeModel):
         self.device = device
 
         best_checkpoint = os.path.join("checkpoints", model_name, "best_model.ckpt")
-        self.model = GaussianDiffusion.load_from_checkpoint(best_checkpoint)
+        self.model = GaussianDiffusion.load_from_checkpoint(files(sgpo) / Path(best_checkpoint))
         if self.model is None:
             raise ValueError("Must implement logic to load or instantiate GaussianDiffusion model.")
 
@@ -149,6 +151,29 @@ class ContinuousModel(GenerativeModel):
             x0 = out['xstart']
             probs = out['probs']
         return x0, probs
+
+
+    def pred_x0(self, x: torch.Tensor, t: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]: # t=0 : data, t=1 : noise
+        infill_mask = (torch.ones(self.seq_len) != self.tokenizer.pad_id-100).to(self.device)  # switch 30 for self.net.tokenizer.pad_id
+        # infill_mask = infill_mask * self.mask
+        attn_mask = torch.ones((x.shape[0], self.seq_len),dtype=torch.bool, device=self.device)
+
+        with torch.no_grad():
+            # t = self.noise_schedule.sigma_inv(sigma)
+            idx = (t * len(self.noise_schedule.sigmas)).round().clamp(0, len(self.noise_schedule.sigmas) - 1).int()
+            sigma = self.noise_schedule.sigmas[idx]
+            f_out = self.model.network.forward(x/(sigma**2 + 1).sqrt(), idx, attn_mask=attn_mask)
+            out = self.model.network.pred_xstart(
+                x,
+                t,
+                attn_mask=attn_mask,
+                sequence_output=f_out['sequence_output'],
+                infill_mask=infill_mask
+            )
+            x0 = out['xstart']
+            probs = out['probs']
+        return x0, probs
+
     
     def score(self, x, t):
         """

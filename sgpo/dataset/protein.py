@@ -6,12 +6,16 @@ import copy
 from sgpo.oracle.inference_oracle import inference_oracle
 import os
 from Bio import SeqIO
+from importlib_resources import files
+from pathlib import Path
+import sgpo
+
 
 class ProteinPredictorDataset(DiscreteData):
     def __init__(self, data_config, tokenizer, n_random_init=0, n_max_mutations=None, from_fasta=None):
         
         self.data_config = data_config
-        self.df = pd.read_csv(data_config.data_path)
+        self.df = pd.read_csv(files(sgpo) / Path(data_config.data_path))
         self.name = data_config.name
 
         self.n_max_mutations = n_max_mutations
