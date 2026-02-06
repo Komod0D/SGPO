@@ -1,1 +1,0 @@
-/home/komodo/Documents/uni/thesis/sgpo/sgpo/training/train_GP_classifier.py
