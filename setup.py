@@ -8,5 +8,6 @@ setup(name='sgpo',
       description='Steered Generation for Protein Optimization (SGPO)',
       author='misc',
       packages=find_packages(include=['sgpo', 'sgpo.*']),
-      include_package_data=True
+      include_package_data=True,
+      install_requires=['importlib_resources']
      )
