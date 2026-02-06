@@ -1,1 +1,0 @@
-/home/komodo/Documents/uni/thesis/sgpo/sgpo/problem/protein_continuous.py
