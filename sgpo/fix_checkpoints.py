@@ -3,7 +3,7 @@ from importlib_resources import files
 import sgpo
 from pathlib import Path
 path = files(sgpo)
-ckpt = torch.load(path / Path('checkpoints/continuous_ESM/CreiLOV/best_model.ckpt'))
+ckpt = torch.load(path / Path('checkpoints/continuous_ESM/CreiLOV/best_model.ckpt'), map_location=torch.device('cpu'))
 ckpt['hyper_parameters']
 hps = ckpt['hyper_parameters']
 for key, value in hps.items():

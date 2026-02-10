@@ -1,3 +1,4 @@
 include sgpo/data/**/*.csv
 include sgpo/data/**/*.fasta
 include sgpo/checkpoints/continuous_ESM/CreiLOV/*.ckpt
+include sgpo/**/*.yaml
